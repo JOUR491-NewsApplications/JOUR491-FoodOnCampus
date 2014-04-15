@@ -3,12 +3,32 @@ from django.db import models
 class Hall(models.Model):
     name = models.CharField(max_length=255)
     name_slug = models.SlugField()
-    location
-    complex
+    location_x = models.FloatField()
+    location_y = models.FloatField()
+    complex_id = models.IntegerField()
     def __unicode__(self):
-        return self.recipient_name
-    
+        return self.name
 
+class FoodType(models.Model):
+    name = models.CharField(max_length=255)
+    name_slug = models.SlugField()
+    def __unicode__(self):
+        return self.name
+        
+class Food(models.Model):  
+    name = models.CharField(max_length=255)
+    name_slug = models.SlugField()
+    food_type = models.ForeignKey(FoodType)
+    def __unicode__(self):
+        return self.name
+
+"""
+class Menu(models.Model):
+    date 
+    hall
+    food == many to many -- look it up in the docs.
+"""
+    
 """
 class PrimaryAward(models.Model):
     agency_name_slug = models.SlugField()

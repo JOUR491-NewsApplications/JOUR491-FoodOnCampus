@@ -6,12 +6,16 @@ class Hall(models.Model):
     location_x = models.FloatField()
     location_y = models.FloatField()
     complex_id = models.IntegerField()
+    def get_absolute_url(self):
+        return "/hall/%s/" % self.name_slug
     def __unicode__(self):
         return self.name
 
 class FoodType(models.Model):
     name = models.CharField(max_length=255)
     name_slug = models.SlugField()
+    def get_absolute_url(self):
+        return "/food-type/%s/" % self.name_slug
     def __unicode__(self):
         return self.name
         
@@ -19,44 +23,16 @@ class Food(models.Model):
     name = models.CharField(max_length=255)
     name_slug = models.SlugField()
     food_type = models.ForeignKey(FoodType)
+    def get_absolute_url(self):
+        return "/food/%s/" % self.name_slug
     def __unicode__(self):
         return self.name
 
-"""
 class Menu(models.Model):
-    date 
-    hall
-    food == many to many -- look it up in the docs.
-"""
-    
-"""
-class PrimaryAward(models.Model):
-    agency_name_slug = models.SlugField()
-    arra_id = models.IntegerField(db_index=True)
-    award_type = models.ForeignKey(AwardType)
-    awarding_agency = models.ForeignKey(Agency)
-    award_date = models.DateField()
-    recipient_name = models.CharField(max_length=255)
-    recipient_state = models.CharField(max_length=100, blank=True, null=True)
-    recipient_zipcode = models.CharField(max_length=10, blank=True, null=True)
-    state_funded = models.ForeignKey(StateEducationDepartment, blank=True, null=True)
-    district_funded = models.ForeignKey(District, blank=True, null=True)
-    school_funded = models.ForeignKey(School, blank=True, null=True)
-    award_id = models.CharField(max_length=255, db_index=True)
-    award_description = models.TextField(blank=True, null=True)
-    amount_awarded = models.FloatField(blank=True, null=True)
-    amount_disbursed = models.FloatField(blank=True, null=True)
-    reported_number_of_jobs_created = models.FloatField(blank=True, null=True)
-    jobs_created_description = models.TextField(blank=True, null=True)
-    updated = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_now_add=True)
-    checked = models.BooleanField()
-    clean_short_name = models.CharField(max_length=255, blank=True, null=True)
-    clean_award_description = models.TextField(blank=True, null=True)
-    class Meta:
-        verbose_name_plural = "Primary stimulus awards"
+    date = models.DateField()
+    hall = models.ForeignKey(Hall)
+    food = models.ManyToManyField(Food)
     def get_absolute_url(self):
-        return "/stimulus/primary-awards/%s/" % self.arra_id
+        return "/menu/%i/" % self.id
     def __unicode__(self):
-        return self.recipient_name
-"""
+        return "Menu for %s" % self.date

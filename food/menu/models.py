@@ -30,6 +30,8 @@ class Food(models.Model):
 
 class Menu(models.Model):
     date = models.DateField()
+    meal_start = models.DateTimeField()
+    meal_end = models.DateTimeField()
     hall = models.ForeignKey(Hall)
     food = models.ManyToManyField(Food)
     def get_absolute_url(self):

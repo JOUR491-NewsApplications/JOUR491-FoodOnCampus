@@ -11,6 +11,14 @@ class Hall(models.Model):
     def __unicode__(self):
         return self.name
 
+class Meal(models.Model):
+    name = models.CharField(max_length=255)
+    name_slug = models.SlugField()
+    def get_absolute_url(self):
+        return "/meal/%s/" % self.name_slug
+    def __unicode__(self):
+        return self.name
+
 class FoodType(models.Model):
     name = models.CharField(max_length=255)
     name_slug = models.SlugField()
@@ -32,6 +40,7 @@ class Menu(models.Model):
     date = models.DateField()
     meal_start = models.DateTimeField()
     meal_end = models.DateTimeField()
+    meal = models.ForeignKey(Meal)
     hall = models.ForeignKey(Hall)
     food = models.ManyToManyField(Food)
     def get_absolute_url(self):

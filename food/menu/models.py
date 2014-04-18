@@ -42,7 +42,7 @@ class Menu(models.Model):
     meal_end = models.DateTimeField()
     meal = models.ForeignKey(Meal)
     hall = models.ForeignKey(Hall)
-    food = models.ManyToManyField(Food)
+    food = models.ManyToManyField(Food, blank=True, null=True)
     def get_absolute_url(self):
         return "/menu/%i/" % self.id
     def __unicode__(self):

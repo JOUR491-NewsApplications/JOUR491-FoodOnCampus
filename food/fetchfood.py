@@ -29,7 +29,8 @@ for hall in hallsoup.find_all('getcomplexes'):
 
 halls = Hall.objects.all()
 
-today = datetime.datetime.now()
+#today = datetime.datetime.now()
+today = datetime.datetime(2014, 4, 17)
 menudate = today.strftime("%m-%d-%Y")
 
 for hal in halls:

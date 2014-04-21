@@ -1,8 +1,16 @@
-{% extends "base.html"}
+{% extends "base.html"%}
 
-{% block title %}{% endblock %}
+{% block title %}Hangry at UNL -- FEED ME{% endblock %}
 
 
-{% block header %}{% endblock %}
+{% block header %}<h1>Hangry at UNL -- FEED ME</h1>{% endblock %}
 
-{% block content %}{% endblock %}
+{% block content %}
+
+{% for object in halls %}
+<p><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></p>
+{% endfor %}
+
+
+
+{% endblock %}

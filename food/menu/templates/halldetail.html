@@ -1,0 +1,19 @@
+{% extends "base.html"%}
+
+{% block title %}{{ hall.name }}{% endblock %}
+
+
+{% block header %}<h1>{{ hall.name }}</h1>{% endblock %}
+
+{% block content %}
+
+{% for object in menus %}
+<h2>{{ object.meal.name }}</h2>
+<p>{{ object.meal.name }} starts at {{ object.meal_start }}</p>
+{% for food in object.food.all %}<p>{{ food.name }}</p>{% endfor %}
+
+{% endfor %}
+
+
+
+{% endblock %}

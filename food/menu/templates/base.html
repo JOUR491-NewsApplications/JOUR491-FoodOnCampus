@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <head>
+<script type="text/javascript">
+function toggle() {
+ if( document.getElementById("hidethis").style.display=='none' ){
+   document.getElementById("hidethis").style.display = 'table-row'; // set to table-row instead of an empty string
+ }else{
+   document.getElementById("hidethis").style.display = 'none';
+ }
+}
+</script>
 <base href="http://www.dailynebraskan.com/content/tncms/live/" />
 <meta name="googlebot" content="noarchive" />
 <meta name="description" content="First 100 words here." />

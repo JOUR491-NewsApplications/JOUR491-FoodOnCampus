@@ -12,6 +12,7 @@ function toggle() {
 
 {% block header %}<h1>{{ hall.name }}</h1>{% endblock %}
 <span onClick="toggle();">
+<table>
 <tr id="hidethis" style="display:none;">
 
 {% block content %}
@@ -24,6 +25,7 @@ function toggle() {
 {% for food in object.food.all %}<p>{{ food.name }}</p>{% endfor %}
 </td>
 </tr>
+</table>
 </span>
 {% endfor %}
 

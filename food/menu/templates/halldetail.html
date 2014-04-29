@@ -18,7 +18,7 @@ function toggle() {
 <span onclick="toggle();"
 <h2>{{ object.meal.name }}</h2></span>
 <table>
-<tr id="hidethis" style="display:none;">
+<tr id="hidethis;">
 <td>
 <p>{{ object.meal.name }} starts at {{ object.meal_start }}</p>
 {% for food in object.food.all %}<p>{{ food.name }}</p>{% endfor %}

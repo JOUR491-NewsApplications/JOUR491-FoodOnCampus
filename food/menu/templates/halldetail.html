@@ -1,4 +1,10 @@
 {% extends "base.html"%}
+
+{% block title %}{{ hall.name }}{% endblock %}
+
+{% block header %}<h1>{{ hall.name }}</h1>{% endblock %}
+
+{% block content %}
 <script type="text/javascript">
 function toggle() {
  if( document.getElementById("hidethis").style.display=='none' ){
@@ -8,25 +14,19 @@ function toggle() {
  }
 }
 </script>
-{% block title %}{{ hall.name }}{% endblock %}
 
-{% block header %}<h1>{{ hall.name }}</h1>{% endblock %}
-
-{% block content %}
 
 {% for object in menus %}
 <span onclick="toggle();">
-<h2>{{ object.meal.name }}</h2></span>
+<h2>{{ object.meal.name }}</h2>
+</span>
 <table>
-<tr id="hidethis">
-<td>
+<tr id="hidethis" style="display:none;">
 <p>{{ object.meal.name }} starts at {{ object.meal_start }}</p>
-{% for food in object.food.all %}<p>{{ food.name }}</p>{% endfor %}
-</td>
+<td>{% for food in object.food.all %}<p>{{ food.name }}</p>{% endfor %}</td>
+
+{% endfor %}
 </tr>
 </table>
-{% endfor %}
-
-
-
 {% endblock %}
+

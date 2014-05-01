@@ -17,7 +17,7 @@
 
 <div class="col-md-12" id="accordion">
 {% for object in menus %}
-<h2>{{ object.meal.name }}</h2>
+<h4><a>{{ object.meal.name }}</a></h4>
 <p><strong>{{ object.meal.name }} starts at {{ object.meal_start }}</strong><br/>
 {% for food in object.food.all %}{{ food.name }}<br />{% endfor %}
 </p>
